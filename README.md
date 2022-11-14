@@ -1,2 +1,2 @@
-# my-brain
+# My Brain
 Brain management
