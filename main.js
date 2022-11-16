@@ -1,5 +1,7 @@
 const { app, BrowserWindow } = require('electron');
-const _repository = require('./repository/repository');
+const _taskRepository = require('./repository/task.repository');
+const { v4: uuidv4 } = require('uuid');
+const { TaskModel } = require('./models/task.model');
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -16,12 +18,6 @@ function createWindow() {
 app.whenReady().then(() => {
   createWindow();
 
-  _repository.Insert('users.json', {
-    id: 1,
-    name: 'Alexandre Beato',
-    email: 'alebeato9@gmail.com',
-  });
-
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
       createWindow();
@@ -34,3 +30,4 @@ app.on('window-all-closed', () => {
     app.quit();
   }
 });
+
